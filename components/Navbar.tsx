@@ -1,6 +1,4 @@
 'use client';
-import Link from 'next/link';
-import Image from 'next/image';
 import logo from '../public/BM_Logo_Gold-White.png';
 import { Header, Nav, NavLink, Logo } from '../styles/navbarStyles';
 

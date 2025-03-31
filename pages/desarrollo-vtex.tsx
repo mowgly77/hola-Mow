@@ -2,6 +2,34 @@
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import { Container, Main, Title } from '../styles/homeStyles';
+import { getEntradas } from "../components/lib/entradas";
+import { useEffect, useState } from 'react';
+
+interface EntradaBlog {
+  id: number;
+  attributes: {
+    title: string;
+  };
+}
+
+export function Blog() {
+  const [posts, setPosts] = useState<EntradaBlog[]>([]);
+
+  useEffect(() => {
+    getEntradas().then(setPosts);
+  }, []);
+
+  return (
+    <div>
+      <h1>Notas del blog</h1>
+      <ul>
+        {posts.map((post: EntradaBlog) => (
+          <li key={post.id}>{post.attributes.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function Desarrollovtex() {
   return (
@@ -14,6 +42,9 @@ export default function Desarrollovtex() {
         <Navbar />
         <Main>
           <Title>Desarrollo VTEX</Title>
+          <>
+          <Blog></Blog>
+          </>
         </Main>
       </Container>
     </>
