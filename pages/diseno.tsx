@@ -2,8 +2,19 @@
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import { Container, Main, Title } from '../styles/homeStyles';
+import { useEffect, useState } from 'react';
 
 export default function Diseno() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <>
       <Head>

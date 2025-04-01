@@ -1,11 +1,30 @@
 'use client';
 import logo from '../public/BM_Logo_Gold-White.png';
-import { Header, Nav, NavLink, Logo } from '../styles/navbarStyles';
+import Image from 'next/image';
+import { Header, Nav, NavLink } from '../styles/navbarStyles';
+import { useEffect, useState } from 'react';
 
 export default function Navbar() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <Header>
-      <Logo src={logo} alt="Brick & Mortar Logo" width={100} height={60} priority />
+              <NavLink href="/"><Image 
+        src={logo} 
+        alt="Brick & Mortar Logo" 
+        width={100}
+        priority
+      /></NavLink>
+
+      
       <Nav>
         <NavLink href="/diseno">Diseño</NavLink>
         <NavLink href="/influencia">Influencia</NavLink>

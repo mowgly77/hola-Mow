@@ -6,10 +6,9 @@ import { getEntradas } from "../components/lib/entradas";
 import { useEffect, useState } from 'react';
 
 interface EntradaBlog {
-  id: number;
-  attributes: {
-    title: string;
-  };
+  id?: number;
+  title?: string;
+
 }
 
 export function Blog() {
@@ -17,6 +16,7 @@ export function Blog() {
 
   useEffect(() => {
     getEntradas().then(setPosts);
+    console.log(posts, "posts")
   }, []);
 
   return (
@@ -24,7 +24,7 @@ export function Blog() {
       <h1>Notas del blog</h1>
       <ul>
         {posts.map((post: EntradaBlog) => (
-          <li key={post.id}>{post.attributes.title}</li>
+          <li key={post.id}>{post.title}</li>
         ))}
       </ul>
     </div>

@@ -6,8 +6,19 @@ import logo from '../public/BM_Logo_Gold-White.png';
 import Head from 'next/head';
 import Navbar from '../components/Navbar';
 import { Container, Main, Title } from '../styles/homeStyles';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
+
   return (
     <>
       <Head>
@@ -17,7 +28,7 @@ export default function Home() {
       <Container>
         <Navbar />
         <Main>
-          <Image src={logo} alt="Logo Brick & Mortar" width={200} height={200} />
+          <Image src={logo} alt="Logo Brick & Mortar" width={200} priority />
           <Title>BRICK & MORTAR</Title>
         </Main>
       </Container>

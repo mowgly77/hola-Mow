@@ -1,7 +1,6 @@
 'use client';
 import styled from 'styled-components';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export const Header = styled.header`
   display: flex;
@@ -23,9 +22,4 @@ export const NavLink = styled(Link)`
   &:hover {
     color: #f4ce77;
   }
-`;
-
-export const Logo = styled(Image)`
-  width: auto;
-  height: 60px;
 `;
